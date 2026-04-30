@@ -1,0 +1,8 @@
+{
+  "name": "cse340-practice-nunez",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+      "start": "node server.js"
+  }
+}
