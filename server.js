@@ -1,8 +1,6 @@
-/**
- * Routes
- */
 const express = require('express');
 const path = require('path');
+const routes = require('./src/controllers/routes');
 
 const app = express();
 
@@ -13,23 +11,8 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'src/views'));
 
-/**
- * Routes
- */
-app.get('/', (req, res) => {
-    const title = 'Welcome Home';
-    res.render('home', { title });
-});
-
-app.get('/about', (req, res) => {
-    const title = 'About Me';
-    res.render('about', { title });
-});
-
-app.get('/products', (req, res) => {
-    const title = 'Our Products';
-    res.render('products', { title });
-});
+// Routes
+app.use('/', routes);
 
 const PORT = 3000;
 
