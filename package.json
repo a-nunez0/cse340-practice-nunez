@@ -1,12 +1,13 @@
 {
   "name": "cse340-practice-nunez",
   "dependencies": {
+    "ejs": "^6.0.1",
     "express": "^5.2.1"
   },
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon --env-file=.env server.js"
+    "dev": "nodemon"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"
