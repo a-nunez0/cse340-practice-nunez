@@ -1,0 +1,14 @@
+<%- include('partials/header') %>
+
+<main>
+    <h1><%= status %> - <%= message %></h1>
+
+    <% if (stack) { %>
+        <pre><%= stack %></pre>
+    <% } %>
+
+    <p><a href="/">Return Home</a></p>
+</main>
+
+</body>
+</html>

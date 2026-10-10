@@ -1,3 +1,5 @@
+
+import routes from './src/routes.js';
 import express from 'express';
 import { fileURLToPath } from 'url';
 import path from 'path';
@@ -46,6 +48,30 @@ app.get('/products', (req, res) => {
     res.render('products', { title });
 });
 
+app.use(routes);
+
+app.use((req, res, next) => {
+    const error = new Error('Page not found');
+    error.status = 404;
+    next(error);
+});
+
+app.use((err, req, res, next) => {
+    const status = err.status || 500;
+    const isDevelopment = NODE_ENV.toLowerCase().includes('dev');
+
+    res.status(status).render('error', {
+        title: 'Error',
+        status: status,
+        message: isDevelopment
+            ? err.message
+            : status === 404
+                ? 'Page not found'
+                : 'Internal Server Error',
+        stack: isDevelopment ? err.stack : null
+    });
+});
+
 // When in development mode, start a WebSocket server for live reloading
 if (NODE_ENV.includes('dev')) {
     const ws = await import('ws');
@@ -69,3 +95,4 @@ if (NODE_ENV.includes('dev')) {
 app.listen(PORT, () => {
     console.log(`Server is running on http://127.0.0.1:${PORT}`);
 });
+
