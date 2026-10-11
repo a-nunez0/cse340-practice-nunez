@@ -1,0 +1,19 @@
+<%- include('partials/header') %>
+
+<main>
+  <h1>Course Catalog</h1>
+  <p>Select a course to view its details.</p>
+
+  <ul>
+    <% courses.forEach((course) => { %>
+      <li>
+        <a href="/catalog/<%= course.id %>">
+          <%= course.id %> - <%= course.title %>
+        </a>
+        (<%= course.credits %> credits)
+      </li>
+    <% }) %>
+  </ul>
+</main>
+
+<%- include('partials/footer') %>

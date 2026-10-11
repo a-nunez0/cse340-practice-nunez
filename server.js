@@ -43,11 +43,6 @@ app.get('/about', (req, res) => {
     res.render('about', { title });
 });
 
-app.get('/products', (req, res) => {
-    const title = 'Our Products';
-    res.render('products', { title });
-});
-
 app.use(routes);
 
 app.use((req, res, next) => {
